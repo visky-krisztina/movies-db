@@ -55,11 +55,15 @@ const LandingPage = () => {
 		<>
 			<SearchForm handleSearch={fetchMovies} />
 			{content}
-			<Pagination
-				totalPages={Math.ceil(movies.length / moviesPerPage)}
-				currentPage={currentPage}
-				onPageChange={paginate}
-			/>
+			{!movies || movies.length == 0 ? (
+				<h4 style={{ textAlign: "center" }}>No matching movies found..</h4>
+			) : (
+				<Pagination
+					totalPages={Math.ceil(movies.length / moviesPerPage)}
+					currentPage={currentPage}
+					onPageChange={paginate}
+				/>
+			)}
 		</>
 	);
 };
